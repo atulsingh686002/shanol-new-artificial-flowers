@@ -320,6 +320,25 @@
   });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const addBtn = document.getElementById("add-to-cart-btn");
+
+  if (addBtn) {
+    addBtn.addEventListener("click", () => {
+      const productData = JSON.parse(localStorage.getItem("selectedProduct"));
+
+      if (productData && typeof addToCart === "function") {
+        addToCart(productData.id);   // cart me add karega
+        updateCartCount();           // cart count update
+        renderCart();                // cart section refresh
+      } else {
+        alert("Product not found!");
+      }
+    });
+  }
+});
+</script>
 
 
  
@@ -332,3 +351,4 @@
 
 </body>
 </html>
+
